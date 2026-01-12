@@ -1,6 +1,7 @@
 {
   "name": "Fork U-House Card",
   "render_readme": true,
-  "filename": "fork-u-house-card.js",
+  "filename": "fork_u-house_card.js",
   "dashboard": "lovelace"
+
 }
