@@ -460,11 +460,11 @@ class ForkUHouseCard extends HTMLElement {
               position: relative; display: flex; flex-direction: column; width: 100%; height: 350px;
               overflow: hidden;
               text-shadow: var(--primary-background-color) 0 1px 0px;
+              box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
               /* Please style borders and box shadow manually */
               /*
               background: var(--fork-u-bg);
               border-radius: 20px;
-              box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
               font-family: 'Roboto', sans-serif;
               border: 1px solid rgba(255,255,255,0.1);
               */
@@ -538,7 +538,10 @@ class ForkUHouseCard extends HTMLElement {
           .footer-content { 
               font-size: 0.85rem; color: #ccc; 
               white-space: normal; line-height: 1.4; 
-              display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+              display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; 
+              /*
+              overflow: hidden;
+              */
           }
         </style>
         <div class="card">
