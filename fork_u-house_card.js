@@ -1,5 +1,5 @@
 /**
- * Fork_U-House_Card v11.0 (AI Storyteller Edition)
+ * Fork_U-House_Card v12.0 (AI Storyteller Edition)
  * * FEATURE: Long, descriptive, "AI-like" status messages with context & reasoning.
  * * FEATURE: Pollen support restored & integrated into advice logic.
  * * FEATURE: Wind Chill logic (Wind + Cold temp = specific advice).
@@ -115,10 +115,11 @@ class ForkUHouseCard extends HTMLElement {
     static getStubConfig() {
       return {
         language: "pl",
-        image: "/local/community/fork-u-house-card/images/autumn_day.jpg",
+        image: "/local/community/fork-u-house-card/images/",
         
         // Entities
         weather_entity: "weather.forecast_home",
+        season_entity: "sensor.season",
         sun_entity: "sun.sun",
         cloud_coverage_entity: "sensor.openweathermap_cloud_coverage",
         party_mode_entity: "input_boolean.gaming_mode",  // enables gaming ambient
@@ -166,11 +167,75 @@ class ForkUHouseCard extends HTMLElement {
       if (this._resizeObserver) this._resizeObserver.disconnect();
       if (this._animationFrame) cancelAnimationFrame(this._animationFrame);
     }
-  
+
+    // --- NOWA LOGIKA WYBORU OBRAZKA ---
+    _calculateImage() {
+        // Pobieramy ścieżkę folderu (zamiast konkretnego pliku)
+        const path = this._config.image_path || "/local/home_bg/";
+        
+        // 1. Pora Dnia (day / night)
+        const sunState = this._hass.states[this._config.sun_entity || 'sun.sun']?.state || 'above_horizon';
+        const timeOfDay = sunState === 'below_horizon' ? 'night' : 'day';
+
+        // 2. Data (Święta: 14.12 - 14.01) - Priorytet absolutny
+        const now = new Date();
+        const month = now.getMonth() + 1;
+        const day = now.getDate();
+        const isXmas = (month === 12 && day >= 14) || (month === 1 && day <= 14);
+
+        if (isXmas) {
+            return `${path}winter_xmas_${timeOfDay}.png`;
+        }
+
+        // 3. Sezon (Pora roku)
+        let season = this._hass.states[this._config.season_entity]?.state || 'summer';
+        // Mapowanie nazw polskich na angielskie (dla nazw plików)
+        const seasonMap = { 'wiosna': 'spring', 'lato': 'summer', 'jesień': 'autumn', 'zima': 'winter' };
+        if (seasonMap[season]) season = seasonMap[season];
+        season = season.toLowerCase();
+
+        // 4. Pogoda + Boolean Config
+        const wStateRaw = this._hass.states[this._config.weather_entity]?.state;
+        
+        if (wStateRaw) {
+            // Zamiana myślników na podkreślniki dla klucza (np. lightning-rainy -> lightning_rainy)
+            const wStateClean = wStateRaw.replace(/-/g, '_').toLowerCase(); 
+            
+            // Konstrukcja klucza konfiguracyjnego
+            // Np.: img_winter_day_fog
+            const configKey = `img_${season}_${timeOfDay}_${wStateClean}`;
+            
+            // SPRAWDZAMY CZY W YAML JEST: img_winter_day_fog: true
+            if (this._config[configKey] === true) {
+                // Jeśli tak, ładujemy specyficzny plik, np. winter_fog_day.png
+                // Uwaga: używamy tutaj nazwy pogody w nazwie pliku (np. fog, rainy, snowy)
+                return `${path}${season}_${wStateRaw}_${timeOfDay}.png`;
+            }
+        }
+
+        // 5. Fallback (Neutralny dla pory roku i dnia)
+        // Np. winter_day.png, summer_night.png
+        return `${path}${season}_${timeOfDay}.png`;
+    }
+
     // --- DATA LOGIC ---
     _updateData() {
       if (!this._hass || !this.shadowRoot.querySelector('.card')) return;
-  
+
+      // --- AKTUALIZACJA TŁA (DYNAMICZNA) ---
+      const newImage = this._calculateImage();
+      // Sprawdzamy czy obrazek się zmienił, żeby nie mrugało
+      if (this._currentImageUrl !== newImage) {
+          this._currentImageUrl = newImage;
+          const bgEl = this.shadowRoot.querySelector('.bg-image');
+          if (bgEl) {
+              // Preload obrazka
+              const img = new Image();
+              img.onload = () => { bgEl.style.backgroundImage = `url('${newImage}')`; };
+              img.src = newImage;
+          }
+      }
+
       // Rooms & Median
       const roomsData = this._config.rooms.map(r => {
         const s = this._hass.states[r.entity];
@@ -403,7 +468,7 @@ class ForkUHouseCard extends HTMLElement {
           
           .bg-image {
               position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-              background-image: url('${this._config.image}'); background-size: cover; background-position: center;
+              background-size: cover; background-position: center;
               z-index: 0; transition: all 0.5s ease;
           }
           .dim-layer {
