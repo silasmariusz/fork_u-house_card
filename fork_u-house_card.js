@@ -49,7 +49,7 @@ const TRANSLATIONS = {
     },
     pl: {
         loading: "Analizuję dane środowiskowe...",
-        home_median: "Dom (Śr.)",
+        home_median: "Dom",
         
         // Warunki
         clear_night: "Bezchmurnie", cloudy: "Pochmurno", fog: "Mgła", hail: "Grad",
