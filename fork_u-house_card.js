@@ -459,8 +459,8 @@ class ForkUHouseCard extends HTMLElement {
           .card {
               position: relative; display: flex; flex-direction: column; width: 100%; height: 350px;
               overflow: hidden;
-              text-shadow: rgba(0,0,0,0.8) 0 1px 0px;
-              box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+              text-shadow: rgba(0,0,0,0.4) 0 1px 0px;
+              box-shadow: 0 4px 10px rgba(0,0,0,0.3);
               /* Please style borders and box shadow manually */
               /*
               background: var(--fork-u-bg);
@@ -513,11 +513,10 @@ class ForkUHouseCard extends HTMLElement {
               position: absolute; transform: translate(-50%, -50%);
               padding: 6px 12px;
               border-radius: 16px;
-              background: rgba(20, 20, 20, 0.4);
+              background: rgba(20, 20, 25, 0.75); 
               backdrop-filter: blur(8px);
-              border: 1px solid rgba(255, 255, 255, 0.05);
-              border-top: 1px solid rgba(0, 0, 0, 0.3);
-              border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+              border: 1px solid rgba(255,255,255,0.15);
+              box-shadow: 0 4px 8px rgba(0,0,0,0.4);
               display: flex; align-items: center; gap: 8px; pointer-events: auto;
           }
           .badge-dot { width: 8px; height: 8px; border-radius: 50%; }
@@ -532,7 +531,7 @@ class ForkUHouseCard extends HTMLElement {
           .footer {
               position: absolute; bottom: 0; left: 0; width: 100%; z-index: 5;
               background: rgba(10, 10, 15, 0.25); backdrop-filter: blur(15px);
-              border-top: 1px solid rgba(255,255,255,0.1); padding: 12px 16px;
+              border-top: 1px solid rgba(255,255,255,0.05); padding: 12px 16px;
               display: flex; align-items: center; gap: 12px; box-sizing: border-box; transition: background 0.3s;
               min-height: 60px; /* Space for multi-line text */
           }
@@ -540,12 +539,10 @@ class ForkUHouseCard extends HTMLElement {
           .footer[data-status="danger"] { background: rgba(80, 20, 20, 0.65); border-top-color: var(--color-hot); }
 
           .value-pill { 
-              background: rgba(20, 20, 20, 0.4);
+              background: rgba(20, 20, 25, 0.75); 
               backdrop-filter: blur(8px);
-              box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), -2px -2px 4px rgba(255, 255, 255, 0.03), inset 1px 1px 2px rgba(255, 255, 255, 0.05);
-              border: 1px solid rgba(255, 255, 255, 0.05);
-              border-top: 1px solid rgba(0, 0, 0, 0.3);
-              border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+              border: 1px solid rgba(255,255,255,0.15);
+              box-shadow: 0 4px 8px rgba(0,0,0,0.4);
               padding: 2px 8px; 
               border-radius: 20px; 
               color: rgba(255, 255, 255, 0.6);
@@ -556,12 +553,10 @@ class ForkUHouseCard extends HTMLElement {
           .median-pill {
               display: none; /* Disabled mediana pill */
               /* Disabled mediana pill */
-              background: rgba(20, 20, 20, 0.4);
+              background: rgba(20, 20, 25, 0.75); 
               backdrop-filter: blur(8px);
-              box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.6), inset -1px -1px 2px rgba(255, 255, 255, 0.03), 0 4px 8px rgba(0, 0, 0, 0.3);
-              border: 1px solid rgba(255, 255, 255, 0.05);
-              border-top: 1px solid rgba(0, 0, 0, 0.3);
-              border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+              border: 1px solid rgba(255,255,255,0.15);
+              box-shadow: 0 4px 8px rgba(0,0,0,0.4);
               padding: 4px 8px; 
               border-radius: 20px; 
               font-size: 0.8rem; 
