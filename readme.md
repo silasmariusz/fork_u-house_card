@@ -2,7 +2,16 @@
 
 (I'm so lazy with codding so I asked Gemini to wrote this card :P Yeap)
 
-REQUIRED: Add season.season and sun.sun sensor before to home assistant!!!!
+REQUIRED: 
+1. Add season.season in integrations
+2. add sun.sun sensor in integration
+3. using googles api add UV index and pooling sensors (google for this its free anyway)
+4. you will need also from google AQI sensors ;)
+5. Add google weather or openweathermap integration - both are free even youll be asked to add credit card for openwratherapi - just on revoult add new virtual card, give them and close it after it.
+if you have old openweathermap API added before 2025 it may not report additional attributes (dont know if im right but had this issue)
+NOTE: wind direction sensor is mandatory telling cloud animations directions movement!
+
+i know its much but if you dont use them then you did not unlock secret items. the journey will start now ;)
 
 ![msedge_bNu5APEUJq](https://github.com/user-attachments/assets/8405dc20-4e71-4588-a56a-044292b8ab87)
 
@@ -57,9 +66,14 @@ Fog: Draw fog, a delicate cloud, or slight smoke in front of the house and next 
 
 Important: If night is generated, always apply a blue-dark navy-grey color variant to the plot suggesting night, turn on lights inside the house, and illuminate the driveway near the thujas where the car is parked.
 
-NOW GENERATING: Winter, Night, Snowing
+NOW GENERATING:
 
-Additionally: Draw an igloo on the plot, a snowman draped with colorful fairy lights (light reflections), and Santa Claus sliding down the roof.
+Winter, Night, Snowing
+
+
+Additionally:
+
+Draw an igloo on the plot, a snowman draped with colorful fairy lights (light reflections), and Santa Claus sliding down the roof.
 ```
 
 ## ✨ Features
@@ -158,4 +172,31 @@ rooms:
     y: 10
 
     weight: 0
+```
+
+## Note for me (reddit questions) answer:
+
+To be honest this is only the one thing fine I was looking for years and finally it was even coded by AI. I did my changes ofcourse and fixes
+
+First I used google street view to take screenshot of my house The Google Maps satellite view to capture roof of my house
+
+I used only free version of Gemini and asked to generate me Sims4 and Sim City like but modern 3d isometric asset of my home in weather and season condition: xxxxx
+
+Where xxx is winter/autumn/spring/summer (add season integration in ha first) Where xxx also contains day and night to generate lights on from the window rooms (you need night shade sensor or use sun sensor from integration) Basically at this step you don’t need to do EXTRAS!!!! I recommend to do this after a week after fine tuning ;). Go to CONTINUE part
+
+EXTRAS generate above with fog using clouds around house for each season and day/night, also rainy useful for spring time and autumn with orange/brown 🍂🍁 around the house
+
+EXTRA2: ask for Xmas season fun things like add Santa snowing from the roof, penguins and iglo on front of your house
+
+EXTRA3: immersive mode, kids birthdays: asked to do synthwave colors, reflection, kid playing on sofa with a gamepad controller, flying Delorin from Back to the Future with lights on and big screen for my kiddo
+
+CONTINUE You are almost done. Download your graphics and move now to free ChatGPT, create a prompt: Asked Gemini with PROMPT written bellow to generate images of my house, but the resolution is too low. (Prompt you used) and that’s all (attach images from Gemini)
+
+You have graphics now. Nice.
+
+Fork my repo on GitHub! Necessary because would be nice if you could edit text strings to much your requirements. If you are newbie use GitHub by web to fork and later to edit files and commit changes - seriously super easy.
+
+https://github.com/silasmariusz/fork_u-house_card
+
+Enjoy
 
