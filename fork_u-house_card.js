@@ -204,6 +204,8 @@ class ForkUHouseCard extends HTMLElement {
                 weatherSuffix = 'rainy';
             } else if (['snowy', 'snowy-rainy'].includes(s)) {
                 weatherSuffix = 'snowy';
+            } else if (s === 'hail') {
+                weatherSuffix = 'hail';
             } else if (s === 'fog') {
                 weatherSuffix = 'fog';
             }
@@ -213,10 +215,11 @@ class ForkUHouseCard extends HTMLElement {
         // 5. Sprawdzenie Boolean w Configu
         if (weatherSuffix) {
             // Klucz np.: img_winter_day_rainy
-            const configKey = `img_${season}_${timeOfDay}_${weatherSuffix}`;
+            const configKey     = `img_${season}_${timeOfDay}_${weatherSuffix}`;
+            const configKey_alt = `img_${season}_${weatherSuffix}_${timeOfDay}`;
             
             // Jeśli w YAML jest: img_winter_day_rainy: true
-            if (this._config[configKey] === true) {
+            if (this._config[configKey] === true || this._config[configKey_alt] === true) {
                 return `${path}${season}_${weatherSuffix}_${timeOfDay}.png`;
             }
         }
@@ -630,7 +633,7 @@ class ForkUHouseCard extends HTMLElement {
       const wEnt = this._config.weather_entity;
       let wState = this._config.test_weather_state || (wEnt ? this._hass.states[wEnt]?.state : "");
       const { speed, bearing } = this._getWindData();
-      const windDirX = (bearing > 180 || bearing < 0) ? 1 : -1;
+      const windDirX = (bearing > 180 || bearing < 0) ? -1 : 1;
       let moveSpeed = speed / 15; if (moveSpeed < 0.2) moveSpeed = 0.2; if (moveSpeed > 6) moveSpeed = 6;
       
       const sunEnt = this._config.sun_entity || 'sun.sun';
