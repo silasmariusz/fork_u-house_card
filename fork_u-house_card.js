@@ -47,6 +47,59 @@ const TRANSLATIONS = {
         
         advice_gaming: "🎮 GAMING MODE: Immersive lighting active. Notifications silenced.",
     },
+    de: {
+        loading: "Umweltdaten werden analysiert...",
+        home_median: "Haus",
+        
+        // Conditions
+        clear_night: "Klare Nacht", cloudy: "Bewölkt", fog: "Nebel", hail: "Hagel",
+        lightning: "Gewitter", lightning_rainy: "Gewitter & Regen",
+        partlycloudy: "Teilweise bewölkt", pouring: "Starkregen", rainy: "Regen",
+        snowy: "Schnee", sunny: "Sonnig", windy: "Windig",
+        
+        // --- AI NARRATIVES ---
+        alert_storm: "⚠️ KRITISCHE WARNUNG: In der Nähe ist ein Gewitter mit Blitzen aktiv. Starker Wind und kräftiger Regen werden erwartet. Sichere lose Gegenstände draußen und bleib zur Sicherheit im Haus.",
+        alert_aqi_bad: "😷 SMOG-ALARM: Die Luftqualität ist kritisch (PM2.5: {val}). Längere Belastung ist gefährlich. Halte die Fenster geschlossen und schalte den Luftreiniger ein.",
+        alert_aqi_mod: "😶 LUFTQUALITÄTSWARNUNG: Die PM2.5-Werte sind erhöht ({val}). Empfindliche Personen sollten heute körperliche Anstrengung im Freien reduzieren.",
+        alert_pollen: "🤧 ALLERGIE-ALARM: Eine hohe Pollenkonzentration wurde erkannt. Wenn du Allergien hast, halte die Fenster geschlossen und lege Medikamente bereit.",
+        advice_rain_soon: "☂️ VORAUSSCHAUEN: Regen zieht auf und wird gegen {time} erwartet (ca. {val} mm). Geh nicht ohne Regenschirm los.",
+        advice_snow_soon: "❄️ WINTERWARNUNG: Schneefall wird gegen {time} erwartet. Die Straßenverhältnisse können sich schnell verschlechtern. Fahr vorsichtig.",
+        advice_rain_now: "🌧️ AKTUELLER REGEN: Die Intensität liegt bei {val} mm/h. Nasse Oberflächen und eingeschränkte Sicht. Fahr vorsichtig und trag wetterfeste Kleidung.",
+        advice_snow_now: "🌨️ ES SCHNEIT: Draußen fällt gerade Schnee. Genieße den Anblick, aber zieh dich warm an, wenn du rausgehst.",
+        alert_uv_high: "☀️ HOHE UV-BELASTUNG: Der UV-Index liegt bei {val}. Ungeschützte Haut kann schnell verbrennen. Nutze Sonnencreme und trage eine Sonnenbrille.",
+        advice_cold_wind: "🥶 WINDCHILL-WARNUNG: Es sind {val}°C, aber der starke Wind lässt es deutlich kälter wirken. Trag winddichte Kleidung und eine Mütze.",
+        advice_cold: "🧣 KALTES WETTER: Die Außentemperatur liegt bei {val}°C. Es ist kühl – schließ deine Jacke und halte dich warm.",
+        advice_hot: "🔥 HITZEHINWEIS: Die Temperatur hat {val}°C erreicht. Vermeide anstrengende Aktivitäten in direkter Sonne und trink ausreichend Wasser.",
+        advice_nice: "😎 ANGENEHME BEDINGUNGEN: Das Wetter ist stabil bei {val}°C mit mäßigem Wind. Gute Zeit für einen Spaziergang oder zum Lüften.",
+        advice_gaming: "🎮 GAMING-MODUS: Immersive Beleuchtung aktiv. Benachrichtigungen stummgeschaltet.",
+    },
+
+    nl: {
+        loading: "Omgevingsgegevens worden geanalyseerd...",
+        home_median: "Huis",
+        
+        // Conditions
+        clear_night: "Heldere nacht", cloudy: "Bewolkt", fog: "Mist", hail: "Hagel",
+        lightning: "Onweer", lightning_rainy: "Onweer & regen",
+        partlycloudy: "Half bewolkt", pouring: "Stortregen", rainy: "Regen",
+        snowy: "Sneeuw", sunny: "Zonnig", windy: "Winderig",
+        
+        // --- AI NARRATIVES ---
+        alert_storm: "⚠️ KRITIEKE WAARSCHUWING: Er is onweer met bliksem actief in de buurt. Sterke wind en zware regen worden verwacht. Zet losse spullen buiten vast en blijf voor de veiligheid binnen.",
+        alert_aqi_bad: "😷 SMOGALARM: De luchtkwaliteit is kritiek (PM2.5: {val}). Langdurige blootstelling is gevaarlijk. Houd ramen gesloten en zet de luchtreiniger aan.",
+        alert_aqi_mod: "😶 LUCHTKWALITEITSWAARSCHUWING: De PM2.5-waarden zijn verhoogd ({val}). Gevoelige personen kunnen zware inspanning buiten vandaag beter beperken.",
+        alert_pollen: "🤧 ALLERGIEALARM: Er is een hoge pollenconcentratie gemeten. Als je last hebt van allergieën, houd ramen gesloten en zorg dat je medicatie klaar ligt.",
+        advice_rain_soon: "☂️ VOORUITPLANNEN: Regen nadert en wordt rond {time} verwacht (ongeveer {val} mm). Ga niet zonder paraplu weg.",
+        advice_snow_soon: "❄️ WINTERWAARSCHUWING: Sneeuwval wordt rond {time} verwacht. De wegomstandigheden kunnen snel verslechteren. Rijd voorzichtig.",
+        advice_rain_now: "🌧️ HET REGENT NU: De intensiteit is {val} mm/u. Natte oppervlakken en verminderd zicht. Rijd voorzichtig en draag waterdichte kleding.",
+        advice_snow_now: "🌨️ HET SNEEUWT: Er valt op dit moment sneeuw. Geniet van het uitzicht, maar kleed je warm aan als je naar buiten gaat.",
+        alert_uv_high: "☀️ HOGE UV-STRALING: De UV-index is {val}. Onbeschermde huid kan snel verbranden. Gebruik zonnebrand en draag een zonnebril.",
+        advice_cold_wind: "🥶 GEVOELSTEMPERATUUR-WAARSCHUWING: Het is {val}°C, maar door de sterke wind voelt het veel kouder aan. Draag winddichte lagen en een muts.",
+        advice_cold: "🧣 KOUD WEER: De buitentemperatuur is {val}°C. Het is fris – doe je jas goed dicht en blijf warm.",
+        advice_hot: "🔥 HITTEADVIES: De temperatuur heeft {val}°C bereikt. Vermijd zware inspanning in direct zonlicht en drink voldoende water.",
+        advice_nice: "😎 AANGENAME OMSTANDIGHEDEN: Het weer is stabiel bij {val}°C met matige wind. Goed moment voor een wandeling of om het huis te luchten.",
+        advice_gaming: "🎮 GAMINGMODUS: Immersieve verlichting actief. Meldingen gedempt.",
+    },
     pl: {
         loading: "Analizuję dane środowiskowe...",
         home_median: "Dom",
@@ -552,7 +605,7 @@ class ForkUHouseCard extends HTMLElement {
               white-space: nowrap;
               transition: all 0.2s ease;
           }
-          pill-1 { 
+          .pill-1 { 
               margin-left: -5px;
               margin-right: 5px;
           }
