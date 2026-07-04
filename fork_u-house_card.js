@@ -88,7 +88,7 @@ const TRANSLATIONS = {
         alert_storm: "⚠️ KRITIEKE WAARSCHUWING: Er is onweer met bliksem actief in de buurt. Sterke wind en zware regen worden verwacht. Zet losse spullen buiten vast en blijf voor de veiligheid binnen.",
         alert_aqi_bad: "😷 SMOGALARM: De luchtkwaliteit is kritiek (PM2.5: {val}). Langdurige blootstelling is gevaarlijk. Houd ramen gesloten en zet de luchtreiniger aan.",
         alert_aqi_mod: "😶 LUCHTKWALITEITSWAARSCHUWING: De PM2.5-waarden zijn verhoogd ({val}). Gevoelige personen kunnen zware inspanning buiten vandaag beter beperken.",
-        alert_pollen: "🤧 ALLERGIEALARM: Er is een hoge pollenconcentratie gemeten. Als je last hebt van allergieën, houd ramen gesloten en zorg dat je medicatie klaar ligt.",
+        alert_pollen: "🤧 ALLERGIEALARM: Er is een hoge pollenconcentratie gemeten. Als je last hebt van allergieën, houd ramen gesloten en zorg dat je medicatie klaarligt.",
         advice_rain_soon: "☂️ VOORUITPLANNEN: Regen nadert en wordt rond {time} verwacht (ongeveer {val} mm). Ga niet zonder paraplu weg.",
         advice_snow_soon: "❄️ WINTERWAARSCHUWING: Sneeuwval wordt rond {time} verwacht. De wegomstandigheden kunnen snel verslechteren. Rijd voorzichtig.",
         advice_rain_now: "🌧️ HET REGENT NU: De intensiteit is {val} mm/u. Natte oppervlakken en verminderd zicht. Rijd voorzichtig en draag waterdichte kleding.",
