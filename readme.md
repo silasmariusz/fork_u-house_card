@@ -148,6 +148,7 @@ pollen_entity: sensor.pollen_level      # Pollen (High/Moderate or number)
 uv_entity: sensor.uv_index              # UV Index
 wind_speed_entity: sensor.wind_speed    # Wind Speed (km/h)
 wind_direction_entity: sensor.wind_bearing # Wind Bearing (degrees)
+precipitation_entity: sensor.openweathermap_rain_intensity # Current rain rate (mm/h), shown in the rain advice
 
 # --- Rooms Configuration ---
 # Define temperature sensors to display as badges over the house image.

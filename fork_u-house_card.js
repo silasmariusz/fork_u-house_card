@@ -1,5 +1,6 @@
 /**
- * Fork_U-House_Card v12.0 (AI Storyteller Edition)
+ * Fork_U-House_Card v12.0 (AI Storyteller Edition) - release 1.666.2
+ * * FIX: Current rain rate from precipitation_entity (weather entities have no precipitation attribute); 0 stays 0.
  * * FEATURE: Long, descriptive, "AI-like" status messages with context & reasoning.
  * * FEATURE: Pollen support restored & integrated into advice logic.
  * * FEATURE: Wind Chill logic (Wind + Cold temp = specific advice).
@@ -72,7 +73,7 @@ const TRANSLATIONS = {
         advice_snow_soon: "<span class='value-pill pill-1'>❄️ <b>ZACHOWAJ OSTROŻNOŚĆ</b></span>  Ok. godziny <span class='value-pill'><b>{time}</b></span> zacznie padać śnieg. Warunki drogowe mogą się gwałtownie pogorszyć.",
         
         // 4. AKTUALNA POGODA
-        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>DESZCZ</b></span>  Aktualny opad to <span class='value-pill'><b>{val}</b> mm</span>. Jest mokro i ślisko. Jeśli musisz wyjść, koniecznie weź kurtkę przeciwdeszczową.",
+        advice_rain_now: "<span class='value-pill pill-1'>🌧️ <b>DESZCZ</b></span>  Aktualny opad to <span class='value-pill'><b>{val}</b> mm/h</span>. Jest mokro i ślisko. Jeśli musisz wyjść, koniecznie weź kurtkę przeciwdeszczową.",
         advice_snow_now: "<span class='value-pill pill-1'>🌨️ <b>ŚNIEG</b></span>  Na zewnątrz sypie śnieg. Jest <span class='value-pill'><b>malowniczo</b></span>, ale pamiętaj o ciepłym ubraniu i czapce.",
         
         // 5. UV
@@ -373,7 +374,7 @@ class ForkUHouseCard extends HTMLElement {
             // Jeśli ma padać w ciągu 3h
             if (nextRain) {
                 const time = new Date(nextRain.datetime).getHours() + ":00";
-                const p = nextRain.precipitation || "~";
+                const p = (typeof nextRain.precipitation === 'number') ? nextRain.precipitation : "~";
                 msg = nextRain.condition === 'snowy' 
                     ? this._t('advice_snow_soon', {time}) 
                     : this._t('advice_rain_soon', {time, val: p});
@@ -381,7 +382,8 @@ class ForkUHouseCard extends HTMLElement {
             }
             // 5. BIEŻĄCE WARUNKI
             else if (['rainy', 'pouring'].includes(condition)) {
-                msg = this._t('advice_rain_now', {val: wObj.attributes.precipitation || "~"}); 
+                const rate = this._getRainRate(wObj);
+                msg = this._t('advice_rain_now', {val: rate !== null ? rate : "~"}); 
                 level = "warn";
             }
             else if (['snowy', 'snowy-rainy'].includes(condition)) {
@@ -422,6 +424,14 @@ class ForkUHouseCard extends HTMLElement {
         if (medianEl) medianEl.innerHTML = `${this._t('home_median')}: <b>${median.toFixed(1)}°C</b>`;
         if (statusEl) statusEl.innerHTML = msg;
         if (footer) footer.setAttribute('data-status', level);
+    }
+
+    _getRainRate(wObj) {
+        // Current rain rate (mm/h): precipitation_entity first, then the weather entity's attribute if it has one.
+        const fromEntity = this._getStateVal(this._config.precipitation_entity);
+        if (fromEntity !== null) return fromEntity;
+        const attr = parseFloat(wObj?.attributes?.precipitation);
+        return isNaN(attr) ? null : attr;
     }
 
     _getStateVal(id) {
